@@ -253,7 +253,7 @@ So The 'lq' tag stores the ligation sequence quality scores in the read header. 
     elif 'TTTTTTTTTTTTTTTTTTTTTTT' in taggedRecords[0].sequence or 'TTTTTTTTTTTTTTTTTTTTTTT' in taggedRecords[1].sequence:
         raise NonMultiplexable('PolyT')
 ```
-- Rejects reads with 23+ consecutive T's (poly-T contamination)
+- Rejects reads with 23+ consecutive T's (poly-T contamination) by checking in R1 and R2. If found in either if them the read is tagged as polyT
 
 ```python
     elif ('AGTCCGACGAT' in taggedRecords[0].sequence[:30] or
