@@ -206,6 +206,10 @@ def demultiplex(self, records, **kwargs):
 - Adds tags to both reads:
   - `lh`: ligation sequence
   - `lq`: ligation qualities (encoded)
+In sequencing, each base has a quality score (Q-score) that indicates confidence:
+Raw quality scores are integers (e.g., 20, 30, 40)
+FASTQ files encode these as ASCII characters to save space
+So The 'lq' tag stores the ligation sequence quality scores in the read header. Since this goes directly into the FASTQ header line, it must use only safe characters.
   - `dt`: data type = 'CHIC'
 
 ### RNA Contamination Detection
